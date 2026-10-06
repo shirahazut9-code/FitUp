@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class MemberShipType:BaseEntity
+    public class MemberShipTypes:BaseEntity
     {
         private string typeName;
         private int price;

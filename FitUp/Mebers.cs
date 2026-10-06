@@ -8,10 +8,10 @@ namespace Model
 {
     public class Members:Person
     {
-        private MemberShipType typeName;
+        private MemberShipTypes typeName;
         private DateTime expirationDate;
 
-        public MemberShipType TypeName { get => typeName; set => typeName = value; }
+        public MemberShipTypes TypeName { get => typeName; set => typeName = value; }
         public DateTime ExpirationDate { get => expirationDate; set => expirationDate = value; }
     }
 }

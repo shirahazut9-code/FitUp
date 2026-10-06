@@ -12,7 +12,7 @@ namespace Model
         private string lastName;
         private int phonNumber;
         private string email;
-        private int pass;
+        private string pass;
         private DateTime birthDate;
         private bool active;
 
@@ -20,7 +20,7 @@ namespace Model
         public string LastName { get => lastName; set => lastName = value; }
         public int PhonNumber { get => phonNumber; set => phonNumber = value; }
         public string Email { get => email; set => email = value; }
-        public int Pass { get => pass; set => pass = value; }
+        public string Pass { get => pass; set => pass = value; }
         public DateTime BirthDate { get => birthDate; set => birthDate = value; }
         public bool Active { get => active; set => active = value; }
     }
