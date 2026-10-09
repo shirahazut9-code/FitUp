@@ -20,7 +20,7 @@ namespace ViewModel
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             MemberShipTypes mt = entity as MemberShipTypes;
-            mt.TypeName = reader["FoodName"].ToString();
+            mt.TypeName = reader["TypeName"].ToString();
             mt.Price = int.Parse(reader["Price"].ToString());
             
 
