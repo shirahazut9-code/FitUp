@@ -6,13 +6,14 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ViewModel
 {
     public abstract class BaseDB
     {
         protected static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\User\\Source\\Repos\\FitUp\\ViewModel\\FitUpProject.accdb";
-
+        //Provider=Microsoft.ACE.OLEDB.12.0;Data Source = "C:\Users\User\source\repos\FitUp\ViewModel\FitUp11 .accdb"; Persist Security Info=True
         //protected static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\User\\Downloads\\FitUp11 (1) (5).accdb\"";
 
 

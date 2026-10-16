@@ -22,8 +22,15 @@ namespace ViewModel
         {
             Training t = entity as Training;
             t.IdTrainer = TrainersDB.SelectById((int)reader["IdTrainer"]);
-            t.DateofTraining = DateOnly.Parse(reader["DateofTraining"].ToString());
-            t.HourOfTraing= TimeOnly.Parse(reader["hourOfTraing"].ToString());
+
+            DateTime dt1 = Convert.ToDateTime(reader["DateofTraining"]);
+            t.DateofTraining = DateOnly.FromDateTime(dt1);
+           
+
+            DateTime dt2 = Convert.ToDateTime(reader["hourOfTraing"]);
+            t.HourOfTraing = TimeOnly.FromDateTime(dt2);
+
+            
             t.TrainingTypeID= TrainingTypesDB.SelectById((int)reader["TrainingTypeID"]);
 
             base.CreateModel(entity);
