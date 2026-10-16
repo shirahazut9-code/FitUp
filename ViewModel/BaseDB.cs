@@ -11,7 +11,9 @@ namespace ViewModel
 {
     public abstract class BaseDB
     {
-        protected static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\User\\Downloads\\FitUp11 (1) (5).accdb\"";
+        protected static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\User\\Source\\Repos\\FitUp\\ViewModel\\FitUpProject.accdb";
+
+        //protected static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\User\\Downloads\\FitUp11 (1) (5).accdb\"";
 
 
         //protected static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="

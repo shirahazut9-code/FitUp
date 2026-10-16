@@ -19,8 +19,8 @@ namespace ViewModel
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             Person p = entity as Person;
-            p.FirstName = reader["firstName"].ToString();
-            p.LastName = reader["lastName"].ToString();
+            p.FirstName = reader["FirstName"].ToString();
+            p.LastName = reader["LastName"].ToString();
             p.PhonNumber = int.Parse(reader["PhonNumber"].ToString());
             p.Email = reader["Email"].ToString();
             p.Pass = reader["Pass"].ToString();

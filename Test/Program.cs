@@ -36,15 +36,17 @@ namespace Test
             foreach (Diet c in dtList)
                 Console.WriteLine($"{c.IDFood.FoodName},{c.IDMember.Id},{c.MealTime}");
             Console.WriteLine("==============================");
-            ////MembersDB
-            //MembersDB mt = new MembersDB();
-            //MembersList mtList = mt.SelectAll();
-            //foreach (Members c in mtList)
-            //    Console.WriteLine($"{c.TypeName},{c.IDMember.Id},{c.MealTime}");
 
-           
-
-
+            //MembersDB
+            MembersDB mt = new MembersDB();
+            MembersList mtList = mt.SelectAll();
+            foreach (Members c in mtList)
+                Console.WriteLine($"{c.TypeName.TypeName},{c.ExpirationDate}");
+            //PersonDB
+            PersonDB p = new PersonDB();
+            PersonList pList = p.SelectAll();
+            foreach (Person c in pList)
+                Console.WriteLine($"{c.FirstName},{c.LastName},{c.PhonNumber},{c.Email},{c.Pass},{c.Active}");
         }
 
     } 
