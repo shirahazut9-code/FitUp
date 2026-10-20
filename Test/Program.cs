@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Data;
 using System.Reflection.Metadata;
 using ViewModel;
 namespace Test
@@ -36,7 +37,7 @@ namespace Test
             DietList dtList = dt.SelectAll();
             foreach (Diet c in dtList)
                 Console.WriteLine($"{c.IDFood.FoodName},{c.IDMember.Id},{c.MealTime}");
-           
+
             Console.WriteLine("========mEMBERS======================");
 
             //MembersDB
@@ -86,6 +87,100 @@ namespace Test
             foreach (Bookings c in bList)
                 Console.WriteLine($"{c.IDMember.Id},{c.TrainingID.Id}");
             Console.WriteLine("==============================");
+
+            //UpdateMemberShipTypes
+            Console.WriteLine("=================UpdateMemberShipTypes=============");
+
+            MemberShipTypesDB msst = new();
+            MemberShipTypesList mstList = msst.SelectAll();
+            foreach (MemberShipTypes c in mstList)
+            {
+                Console.WriteLine(c.Price);
+                Console.WriteLine(c.TypeName);
+            }
+            MemberShipTypes MemberShipTypestoupdate = mstList[0];
+            MemberShipTypestoupdate.Price += 44;
+            MemberShipTypestoupdate.TypeName += "אאא";
+            msst.Update(MemberShipTypestoupdate);
+            int x= msst.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
+            //UpdatePerson
+            Console.WriteLine("================UpdatePeson==============");
+            Person personUpDate = pList[0];
+            personUpDate.FirstName += "חכחכ";
+            personUpDate.LastName += "אאא";
+            personUpDate.PhonNumber += 8383;
+            personUpDate.Email += "אאא";
+            personUpDate.Pass += "אאא";
+            personUpDate.BirthDate =DateTime.Now;
+            personUpDate.Active =false;
+                      
+            p.Update(personUpDate);
+             x= p.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+            // UPDateFood
+            Console.WriteLine("================UPDateFood==============");
+            Food FoodUpDate = flist[0];
+            FoodUpDate.FoodName += "fhjfhf";
+            FoodUpDate.Calories += 4748;
+            FoodUpDate.Proteins += 8383;
+            FoodUpDate.Carbohydrates += 58757;
+            FoodUpDate.ImageLink += "jdff";
+            f.Update(FoodUpDate);
+            x = f.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
+            //UpdateTrainingTypes
+            Console.WriteLine("================UpdateTrainingTypes==============");
+            TrainingTypes TrainingTypesUpDate = ttlist[0];
+            TrainingTypesUpDate.TrainingName += "fhjfhf";
+            TrainingTypesUpDate.MaxParticipants += 4748;
+            TrainingTypesUpDate.LengthTraining += 8383;           
+            db.Update(TrainingTypesUpDate);
+            x = db.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
+            //UpdateTrainers
+            Console.WriteLine("================UpdateTrainers==============");
+            Trainers TrainersUpDate = trList[0];
+            personUpDate.FirstName += "חכחכ";
+            personUpDate.LastName += "אאא";
+            personUpDate.PhonNumber += 8383;
+            personUpDate.Email += "אאא";
+            personUpDate.Pass += "אאא";
+            personUpDate.BirthDate = DateTime.Now;
+            personUpDate.Active = false;
+            TrainersUpDate.Experience = DateTime.Now;              
+            tr.Update(TrainersUpDate);
+            x = tr.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+            //UpDateMembers
+            Console.WriteLine("================UpDateMembers==============");
+            Members MembersUpDate = mtList[0];
+            personUpDate.FirstName += "חכחכ";
+            personUpDate.LastName += "אאא";
+            personUpDate.PhonNumber += 8383;
+            personUpDate.Email += "אאא";
+            personUpDate.Pass += "אאא";
+            personUpDate.BirthDate = DateTime.Now;
+            personUpDate.Active = false;
+            MembersUpDate.TypeName = mstlist[2];
+            MembersUpDate.ExpirationDate = DateTime.Now;                      
+            mt.Update(MembersUpDate);
+            x = mt.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
+
+
+
+
+
+
+
+
+
+
 
 
 

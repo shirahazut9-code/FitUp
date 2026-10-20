@@ -45,6 +45,35 @@ namespace ViewModel
             Members m = list.Find(item => item.Id == id);
             return m;
         }
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Members m = entity as Members;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE Members Set TypeName=@typeName , ExpirationDate=@expirationDate Where ID=@id";
+                command.CommandText = sqlStr;
+                //command.Parameters.Add(new OleDbParameter("@firstName", m.FirstName));
+                //command.Parameters.Add(new OleDbParameter("@lastName", m.LastName));
+                //command.Parameters.Add(new OleDbParameter("@phonNumber", m.PhonNumber));
+                //command.Parameters.Add(new OleDbParameter("@email", m.Email));
+                //command.Parameters.Add(new OleDbParameter("@pass", m.Pass));
+                //command.Parameters.Add("@birthDate", System.Data.OleDb.OleDbType.Date).Value = m.BirthDate;
+                //command.Parameters.Add(new OleDbParameter("@active", m.Active));
+                command.Parameters.Add(new OleDbParameter("@typeName", m.TypeName.Id));
+                command.Parameters.Add(new OleDbParameter("@expirationDate", m.ExpirationDate));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+            }
+        }
+
+        public override void Update(BaseEntity entity)
+        {
+            Members members = entity as Members;
+            if (members != null)
+            {
+                updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
+                updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
+            }
+        }
 
     }
 }

@@ -44,8 +44,34 @@ namespace ViewModel
             return t;
         }
 
+       
 
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
 
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Food m = entity as Food;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE Food Set FoodName=@foodName, Calories=@calories,  Proteins=@proteins , Carbohydrates=@carbohydrates ,ImageLink=@imageLink  Where ID=@id";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@foodName", m.FoodName));
+                command.Parameters.Add(new OleDbParameter("@calories", m.Calories));
+                command.Parameters.Add(new OleDbParameter("@proteins", m.Proteins));
+                command.Parameters.Add(new OleDbParameter("@carbohydrates", m.Carbohydrates));        
+                command.Parameters.Add(new OleDbParameter("@imageLink", m.ImageLink));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+            }
+        }
     }
 }
 

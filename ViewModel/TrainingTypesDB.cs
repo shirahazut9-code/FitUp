@@ -42,8 +42,32 @@ namespace ViewModel
             return t;
         }
 
+      
 
-        
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            TrainingTypes m = entity as TrainingTypes;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE TrainingTypes Set TrainingName=@trainingName, MaxParticipants=@maxParticipants , LengthTraining=@lengthTraining  Where ID=@id";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@trainingName", m.TrainingName));
+                command.Parameters.Add(new OleDbParameter("@maxParticipants", m.MaxParticipants));
+                command.Parameters.Add(new OleDbParameter("@lengthTraining", m.LengthTraining));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+            }
+        }
     }
 }
 

@@ -41,5 +41,29 @@ namespace ViewModel
             MemberShipTypes m = list.Find(item => item.Id == id);
             return m;
         }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            MemberShipTypes m = entity as MemberShipTypes;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE MemberShipTypes Set TypeName=@typeName, Price=@price Where ID=@id";
+
+                command.CommandText= sqlStr ;
+                command.Parameters.Add(new OleDbParameter("@typeName",m.TypeName));
+                command.Parameters.Add(new OleDbParameter("@price", m.Price));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+            }
+        }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

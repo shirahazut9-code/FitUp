@@ -46,5 +46,35 @@ namespace ViewModel
             return g;
         }
 
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Person m = entity as Person;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE Person Set FirstName=@firstName , LastName=@lastName , PhonNumber=@phonNumber , Email=@email ," +
+                    $" Pass=@pass ,BirthDate=@birthDate , Active=@activeactive  Where ID=@id";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@firstName", m.FirstName));
+                command.Parameters.Add(new OleDbParameter("@lastName", m.LastName));
+                command.Parameters.Add(new OleDbParameter("@phonNumber", m.PhonNumber));
+                command.Parameters.Add(new OleDbParameter("@email", m.Email));
+                command.Parameters.Add(new OleDbParameter("@pass", m.Pass));
+                command.Parameters.Add("@birthDate",System.Data.OleDb.OleDbType.Date).Value=m.BirthDate;              
+                command.Parameters.Add(new OleDbParameter("@active", m.Active));                
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+            }
+        }
     }  
 }
