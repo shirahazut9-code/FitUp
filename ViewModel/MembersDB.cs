@@ -50,7 +50,8 @@ namespace ViewModel
             Members m = entity as Members;
             if (m != null)
             {
-                string sqlStr = $"UPDATE Members Set TypeName=@typeName , ExpirationDate=@expirationDate Where ID=@id";
+                string sqlStr = $"UPDATE Members Set MemberShipTypeID=@typeName , ExpirationDate=#{m.ExpirationDate}# Where ID=@id";
+                //string sqlStr = $"UPDATE Members Set MemberShipTypeID=@typeName , ExpirationDate=@expirationDate Where ID=@id";
                 command.CommandText = sqlStr;
                 //command.Parameters.Add(new OleDbParameter("@firstName", m.FirstName));
                 //command.Parameters.Add(new OleDbParameter("@lastName", m.LastName));
@@ -60,7 +61,7 @@ namespace ViewModel
                 //command.Parameters.Add("@birthDate", System.Data.OleDb.OleDbType.Date).Value = m.BirthDate;
                 //command.Parameters.Add(new OleDbParameter("@active", m.Active));
                 command.Parameters.Add(new OleDbParameter("@typeName", m.TypeName.Id));
-                command.Parameters.Add(new OleDbParameter("@expirationDate", m.ExpirationDate));
+                //command.Parameters.Add(new OleDbParameter("@expirationDate", System.Data.OleDb.OleDbType.Date).Value = m.ExpirationDate);
                 command.Parameters.Add(new OleDbParameter("@id", m.Id));
             }
         }

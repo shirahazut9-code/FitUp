@@ -108,68 +108,81 @@ namespace Test
             //UpdatePerson
             Console.WriteLine("================UpdatePeson==============");
             Person personUpDate = pList[0];
-            personUpDate.FirstName += "חכחכ";
-            personUpDate.LastName += "אאא";
-            personUpDate.PhonNumber += 8383;
-            personUpDate.Email += "אאא";
-            personUpDate.Pass += "אאא";
-            personUpDate.BirthDate =DateTime.Now;
-            personUpDate.Active =false;
-                      
-            p.Update(personUpDate);
-             x= p.SaveChanges();
-            Console.WriteLine($"{x}rows were updated");
+            personUpDate.FirstName = "נועם";
+            personUpDate.LastName = "כהן";
+            personUpDate.PhonNumber = 8383;
+            personUpDate.Email = "Noam@gmail.com";
+            personUpDate.Pass = "8876";
+            personUpDate.BirthDate = DateTime.Now;
+            personUpDate.Active = false;
+
+            //p.Update(personUpDate);
+            // x= p.SaveChanges();
+            //Console.WriteLine($"{x}rows were updated");
             // UPDateFood
-            Console.WriteLine("================UPDateFood==============");
-            Food FoodUpDate = flist[0];
-            FoodUpDate.FoodName += "fhjfhf";
-            FoodUpDate.Calories += 4748;
-            FoodUpDate.Proteins += 8383;
-            FoodUpDate.Carbohydrates += 58757;
-            FoodUpDate.ImageLink += "jdff";
-            f.Update(FoodUpDate);
-            x = f.SaveChanges();
-            Console.WriteLine($"{x}rows were updated");
+            //Console.WriteLine("================UPDateFood==============");
+            //Food FoodUpDate = flist[0];
+            //FoodUpDate.FoodName += "fhjfhf";
+            //FoodUpDate.Calories += 4748;
+            //FoodUpDate.Proteins += 8383;
+            //FoodUpDate.Carbohydrates += 58757;
+            //FoodUpDate.ImageLink += "jdff";
+            //f.Update(FoodUpDate);
+            //x = f.SaveChanges();
+            //Console.WriteLine($"{x}rows were updated");
 
             //UpdateTrainingTypes
-            Console.WriteLine("================UpdateTrainingTypes==============");
-            TrainingTypes TrainingTypesUpDate = ttlist[0];
-            TrainingTypesUpDate.TrainingName += "fhjfhf";
-            TrainingTypesUpDate.MaxParticipants += 4748;
-            TrainingTypesUpDate.LengthTraining += 8383;           
-            db.Update(TrainingTypesUpDate);
-            x = db.SaveChanges();
-            Console.WriteLine($"{x}rows were updated");
+            //Console.WriteLine("================UpdateTrainingTypes==============");
+            //TrainingTypes TrainingTypesUpDate = ttlist[0];
+            //TrainingTypesUpDate.TrainingName += "fhjfhf";
+            //TrainingTypesUpDate.MaxParticipants += 4748;
+            //TrainingTypesUpDate.LengthTraining += 8383;           
+            //db.Update(TrainingTypesUpDate);
+            //x = db.SaveChanges();
+            //Console.WriteLine($"{x}rows were updated");
 
             //UpdateTrainers
             Console.WriteLine("================UpdateTrainers==============");
-            Trainers TrainersUpDate = trList[0];
-            personUpDate.FirstName += "חכחכ";
-            personUpDate.LastName += "אאא";
-            personUpDate.PhonNumber += 8383;
-            personUpDate.Email += "אאא";
-            personUpDate.Pass += "אאא";
-            personUpDate.BirthDate = DateTime.Now;
-            personUpDate.Active = false;
-            TrainersUpDate.Experience = DateTime.Now;              
-            tr.Update(TrainersUpDate);
+            Trainers trainersUpDate = trList[0];
+            trainersUpDate.FirstName = "אלמוג";
+            trainersUpDate.LastName = "כהן";
+            trainersUpDate.PhonNumber = 8383;
+            trainersUpDate.Email = "Almog@gmail.com";
+            trainersUpDate.Pass = "6443";
+            trainersUpDate.BirthDate = DateTime.Now;
+            trainersUpDate.Active = false;
+            trainersUpDate.Experience = DateTime.Now;
+            tr.Update(trainersUpDate);
             x = tr.SaveChanges();
             Console.WriteLine($"{x}rows were updated");
             //UpDateMembers
             Console.WriteLine("================UpDateMembers==============");
-            Members MembersUpDate = mtList[0];
-            personUpDate.FirstName += "חכחכ";
-            personUpDate.LastName += "אאא";
-            personUpDate.PhonNumber += 8383;
-            personUpDate.Email += "אאא";
-            personUpDate.Pass += "אאא";
-            personUpDate.BirthDate = DateTime.Now;
-            personUpDate.Active = false;
-            MembersUpDate.TypeName = mstlist[2];
-            MembersUpDate.ExpirationDate = DateTime.Now;                      
-            mt.Update(MembersUpDate);
+            Members membersUpDate = mtList[0];
+            membersUpDate.FirstName = "עדי";
+            membersUpDate.LastName = "לוי";
+            membersUpDate.PhonNumber = 0502223334;
+            membersUpDate.Email = "Shira@gmail.com";
+            membersUpDate.Pass = "55555";
+            membersUpDate.BirthDate = DateTime.Now;
+            membersUpDate.Active = false;
+            membersUpDate.TypeName = mstlist[2];
+            membersUpDate.ExpirationDate = DateTime.Now;                      
+            mt.Update(membersUpDate);
             x = mt.SaveChanges();
             Console.WriteLine($"{x}rows were updated");
+
+            //UpDateTraining
+            Console.WriteLine("================UpDateTraining==============");
+            Training trainingUpDate= tList[0];
+            trainingUpDate.IdTrainer = trList[1];
+            DateTime date = DateTime.Now;
+            trainingUpDate.DateofTraining = DateOnly.FromDateTime(date);
+            trainingUpDate.HourOfTraing = TimeOnly.FromDateTime(date);
+            trainingUpDate.TrainingTypeID = ttlist[0];
+            t.Update(trainingUpDate);
+            x = t.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
 
 
 

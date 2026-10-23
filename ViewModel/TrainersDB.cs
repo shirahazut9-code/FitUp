@@ -49,13 +49,13 @@ namespace ViewModel
                 string sqlStr = $"UPDATE Trainers Set Experience=@experience Where ID=@id";
 
                 command.CommandText = sqlStr;
-                command.Parameters.Add(new OleDbParameter("@firstName", m.FirstName));
-                command.Parameters.Add(new OleDbParameter("@lastName", m.LastName));
-                command.Parameters.Add(new OleDbParameter("@phonNumber", m.PhonNumber));
-                command.Parameters.Add(new OleDbParameter("@email", m.Email));
-                command.Parameters.Add(new OleDbParameter("@pass", m.Pass));
-                command.Parameters.Add("@birthDate", System.Data.OleDb.OleDbType.Date).Value = m.BirthDate;
-                command.Parameters.Add(new OleDbParameter("@active", m.Active));
+                //command.Parameters.Add(new OleDbParameter("@firstName", m.FirstName));
+                //command.Parameters.Add(new OleDbParameter("@lastName", m.LastName));
+                //command.Parameters.Add(new OleDbParameter("@phonNumber", m.PhonNumber));
+                //command.Parameters.Add(new OleDbParameter("@email", m.Email));
+                //command.Parameters.Add(new OleDbParameter("@pass", m.Pass));
+                //command.Parameters.Add("@birthDate", System.Data.OleDb.OleDbType.Date).Value = m.BirthDate;
+                //command.Parameters.Add(new OleDbParameter("@active", m.Active));
                 command.Parameters.Add("@experience", System.Data.OleDb.OleDbType.Date).Value =m.Experience;
                 command.Parameters.Add(new OleDbParameter("@id", m.Id));
             }

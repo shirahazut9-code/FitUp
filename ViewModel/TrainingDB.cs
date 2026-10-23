@@ -51,10 +51,7 @@ namespace ViewModel
             return t;
         }
 
-        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
@@ -64,6 +61,24 @@ namespace ViewModel
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
             throw new NotImplementedException();
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Training m = entity as Training;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE Training Set IdTrainer=@idTrainer , DateofTraining=@dateofTraining , HourOfTraing=@hourOfTraing , TrainingTypeID=@trainingTypeID Where ID=@id";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@idTrainer", m.IdTrainer.Id));
+                command.Parameters.Add("@dateofTraining", System.Data.OleDb.OleDbType.Date).Value = m.DateofTraining;
+                //DateTime dateToSave = t.DateofTraining.ToDateTime(TimeOnly.MinValue);
+                command.Parameters.Add("@hourOfTraing", System.Data.OleDb.OleDbType.Date).Value = m.HourOfTraing;
+                command.Parameters.Add(new OleDbParameter("@trainingTypeID", m.TrainingTypeID.Id));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+
+            }
         }
     }
 }
