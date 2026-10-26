@@ -42,11 +42,7 @@ namespace ViewModel
             Document t = list.Find(item => item.Id == id);
             return t;
         }
-
-        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
@@ -56,6 +52,20 @@ namespace ViewModel
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
             throw new NotImplementedException();
+        }
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Document m = entity as Document;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE Document Set IDTrainer=@iDTrainer, LinkToFile=@linkToFile Where ID=@id";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@iDTrainer", m.IDTrainer.Id));
+                command.Parameters.Add(new OleDbParameter("@linkToFile", m.LinkToFile));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+            }
+            
         }
     }
 }

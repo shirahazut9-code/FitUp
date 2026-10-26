@@ -42,12 +42,7 @@ namespace ViewModel
             Bookings d = list.Find(item => item.Id == id);
             return d;
         }
-
-        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
             throw new NotImplementedException();
@@ -56,6 +51,21 @@ namespace ViewModel
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
             throw new NotImplementedException();
+        }
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Bookings m = entity as Bookings;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE Bookings Set IDMember=@iDMember , TrainingID=@trainingID Where ID=@id";
+
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@iDMember", m.IDMember.Id));
+                command.Parameters.Add(new OleDbParameter("@trainingID", m.TrainingID.Id));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+
+            }
         }
     }
 }

@@ -21,16 +21,10 @@ namespace ViewModel
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             Training t = entity as Training;
-            t.IdTrainer = TrainersDB.SelectById((int)reader["IdTrainer"]);
+            t.IdTrainer = TrainersDB.SelectById((int)reader["IdTrainer"]);     
+            t.DateOfTraining = DateTime.Parse(reader["dateOfTraining"].ToString());
 
-            DateTime dt1 = Convert.ToDateTime(reader["DateofTraining"]);
-            t.DateofTraining = DateOnly.FromDateTime(dt1);
-           
 
-            DateTime dt2 = Convert.ToDateTime(reader["hourOfTraing"]);
-            t.HourOfTraing = TimeOnly.FromDateTime(dt2);
-
-            
             t.TrainingTypeID= TrainingTypesDB.SelectById((int)reader["TrainingTypeID"]);
 
             base.CreateModel(entity);
@@ -68,13 +62,12 @@ namespace ViewModel
             Training m = entity as Training;
             if (m != null)
             {
-                string sqlStr = $"UPDATE Training Set IdTrainer=@idTrainer , DateofTraining=@dateofTraining , HourOfTraing=@hourOfTraing , TrainingTypeID=@trainingTypeID Where ID=@id";
+                string sqlStr = $"UPDATE Training Set IdTrainer=@idTrainer , DateOfTraining=@dateOfTraining , TrainingTypeID=@trainingTypeID Where ID=@id";
+                //string sqlStr = $"UPDATE Training Set IdTrainer=@idTrainer , DateofTraining=@dateofTraining , HourOfTraing=@hourOfTraing , TrainingTypeID=@trainingTypeID Where ID=@id";
 
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@idTrainer", m.IdTrainer.Id));
-                command.Parameters.Add("@dateofTraining", System.Data.OleDb.OleDbType.Date).Value = m.DateofTraining;
-                //DateTime dateToSave = t.DateofTraining.ToDateTime(TimeOnly.MinValue);
-                command.Parameters.Add("@hourOfTraing", System.Data.OleDb.OleDbType.Date).Value = m.HourOfTraing;
+                command.Parameters.Add("@dateOfTraining", System.Data.OleDb.OleDbType.Date).Value = m.DateOfTraining;
                 command.Parameters.Add(new OleDbParameter("@trainingTypeID", m.TrainingTypeID.Id));
                 command.Parameters.Add(new OleDbParameter("@id", m.Id));
 

@@ -10,13 +10,11 @@ namespace Model
     public class Training:BaseEntity
     {
         private Trainers idTrainer;
-        private DateOnly dateofTraining;
-        private TimeOnly hourOfTraing;
+        private DateTime dateOfTraining;
         private TrainingTypes trainingTypeID;
 
-        public Trainers IdTrainer { get => idTrainer; set => idTrainer = value; }
-        public DateOnly DateofTraining { get => dateofTraining; set => dateofTraining = value; }
-        public TimeOnly HourOfTraing { get => hourOfTraing; set => hourOfTraing = value; }
+        public Trainers IdTrainer { get => idTrainer; set => idTrainer = value; }       
         public TrainingTypes TrainingTypeID { get => trainingTypeID; set => trainingTypeID = value; }
+        public DateTime DateOfTraining { get => dateOfTraining; set => dateOfTraining = value; }
     }
 }

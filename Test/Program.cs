@@ -66,7 +66,7 @@ namespace Test
             TrainingDB t = new TrainingDB();
             TrainingList tList = t.SelectAll();
             foreach (Training c in tList)
-                Console.WriteLine($"{c.IdTrainer.Id},{c.DateofTraining},{c.HourOfTraing},{c.TrainingTypeID.Id}");
+                Console.WriteLine($"{c.IdTrainer.Id},{c.DateOfTraining},{c.TrainingTypeID.Id}");
             Console.WriteLine("==============================");
             //Documentdb
             DocumentDB d = new DocumentDB();
@@ -106,7 +106,7 @@ namespace Test
             Console.WriteLine($"{x}rows were updated");
 
             //UpdatePerson
-            Console.WriteLine("================UpdatePeson==============");
+            Console.WriteLine("================UpdatePerson==============");
             Person personUpDate = pList[0];
             personUpDate.FirstName = "נועם";
             personUpDate.LastName = "כהן";
@@ -115,31 +115,30 @@ namespace Test
             personUpDate.Pass = "8876";
             personUpDate.BirthDate = DateTime.Now;
             personUpDate.Active = false;
-
-            //p.Update(personUpDate);
-            // x= p.SaveChanges();
-            //Console.WriteLine($"{x}rows were updated");
-            // UPDateFood
-            //Console.WriteLine("================UPDateFood==============");
-            //Food FoodUpDate = flist[0];
-            //FoodUpDate.FoodName += "fhjfhf";
-            //FoodUpDate.Calories += 4748;
-            //FoodUpDate.Proteins += 8383;
-            //FoodUpDate.Carbohydrates += 58757;
-            //FoodUpDate.ImageLink += "jdff";
-            //f.Update(FoodUpDate);
-            //x = f.SaveChanges();
-            //Console.WriteLine($"{x}rows were updated");
+            p.Update(personUpDate);
+            x = p.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+            //UPDateFood
+            Console.WriteLine("================UPDateFood==============");
+            Food FoodUpDate = flist[0];
+            FoodUpDate.FoodName += "fhjfhf";
+            FoodUpDate.Calories += 4748;
+            FoodUpDate.Proteins += 8383;
+            FoodUpDate.Carbohydrates += 58757;
+            FoodUpDate.ImageLink += "jdff";
+            f.Update(FoodUpDate);
+            x = f.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
 
             //UpdateTrainingTypes
-            //Console.WriteLine("================UpdateTrainingTypes==============");
-            //TrainingTypes TrainingTypesUpDate = ttlist[0];
-            //TrainingTypesUpDate.TrainingName += "fhjfhf";
-            //TrainingTypesUpDate.MaxParticipants += 4748;
-            //TrainingTypesUpDate.LengthTraining += 8383;           
-            //db.Update(TrainingTypesUpDate);
-            //x = db.SaveChanges();
-            //Console.WriteLine($"{x}rows were updated");
+            Console.WriteLine("================UpdateTrainingTypes==============");
+            TrainingTypes TrainingTypesUpDate = ttlist[0];
+            TrainingTypesUpDate.TrainingName += "fhjfhf";
+            TrainingTypesUpDate.MaxParticipants += 4748;
+            TrainingTypesUpDate.LengthTraining += 8383;
+            db.Update(TrainingTypesUpDate);
+            x = db.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
 
             //UpdateTrainers
             Console.WriteLine("================UpdateTrainers==============");
@@ -173,15 +172,49 @@ namespace Test
 
             //UpDateTraining
             Console.WriteLine("================UpDateTraining==============");
-            Training trainingUpDate= tList[0];
+            Training trainingUpDate = tList[0];
             trainingUpDate.IdTrainer = trList[1];
             DateTime date = DateTime.Now;
-            trainingUpDate.DateofTraining = DateOnly.FromDateTime(date);
-            trainingUpDate.HourOfTraing = TimeOnly.FromDateTime(date);
+            trainingUpDate.DateOfTraining = DateTime.Now;
             trainingUpDate.TrainingTypeID = ttlist[0];
             t.Update(trainingUpDate);
             x = t.SaveChanges();
             Console.WriteLine($"{x}rows were updated");
+
+            //Mangager
+
+            //DocumentDB          
+            Console.WriteLine("================UpDateDocument==============");
+            Model.Document DocumentUpDate = dList[0];
+            DocumentUpDate.IDTrainer = trList[0];
+            DocumentUpDate.LinkToFile = "Link";
+            d.Update(DocumentUpDate);
+            x = d.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
+            //Diet
+            Console.WriteLine("================UpDateDiet==============");
+            Diet DietUpDate = dtList[0];
+            DietUpDate.IDFood = flist[0];
+            DietUpDate.IDMember = mtList[0];
+            DietUpDate.MealTime = DateTime.Now;
+            dt.Update(DietUpDate);
+            x = dt.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
+            //BookingsUpDate
+            Console.WriteLine("================BookingsUpDate==============");
+            Bookings BookingsUpDate = bList[0];
+            BookingsUpDate.IDMember = mtList[0];   
+            BookingsUpDate.TrainingID=tList[0];           
+            b.Update(BookingsUpDate);
+            x = b.SaveChanges();
+            Console.WriteLine($"{x}rows were updated");
+
+
+
+
+
 
 
 

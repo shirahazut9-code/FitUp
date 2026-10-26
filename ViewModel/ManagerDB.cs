@@ -39,6 +39,27 @@ namespace ViewModel
             Manager t = list.Find(item => item.Id == id);
             return t;
         }
+
+        //protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        //{
+        //    Manager m = entity as Manager;
+        //    if (m != null)
+        //    {
+        //        string sqlStr = $"UPDATE Manager Set Where ID=@id";
+
+        //        command.CommandText = sqlStr;
+        //        command.Parameters.Add(new OleDbParameter("@id", m.Id));
+        //    }
+        //}
+        public override void Update(BaseEntity entity)
+        {
+            Manager manager = entity as Manager;
+            if (manager != null)
+            {
+                //updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
+                updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
+            }
+        }
     }
 }
 

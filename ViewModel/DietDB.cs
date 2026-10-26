@@ -41,11 +41,7 @@ namespace ViewModel
             Diet d = list.Find(item => item.Id == id);
             return d;
         }
-
-        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
@@ -55,6 +51,22 @@ namespace ViewModel
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
             throw new NotImplementedException();
+        }
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Diet m = entity as Diet;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE Diet Set IDFood=@iDFood , IDMember=@iDMember , MealTime=@mealTime Where ID=@id";
+                
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@iDFood", m.IDFood.Id));
+                command.Parameters.Add(new OleDbParameter("@iDMember", m.IDMember.Id));
+                command.Parameters.Add("@mealTime", System.Data.OleDb.OleDbType.Date).Value = m.MealTime;    
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+
+            }
         }
     }
 }
