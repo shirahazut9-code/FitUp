@@ -58,8 +58,16 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            MemberShipTypes t = entity as MemberShipTypes;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO MemberShipTypes (TypeName, Price, TrainingTypeID) VALUES (@typeName, @price)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@TypeName", t.TypeName));
+                command.Parameters.Add(new OleDbParameter("@price", t.Price));              
+            }
         }
+        
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {

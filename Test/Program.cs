@@ -211,6 +211,40 @@ namespace Test
             x = b.SaveChanges();
             Console.WriteLine($"{x}rows were updated");
 
+            //Insert
+            //TrainingTypesInsert
+
+            Console.WriteLine("================TrainingTypesInsert==============");
+            TrainingTypesDB dddb = new();
+            TrainingTypes ttt = new TrainingTypes() {TrainingName = "אירובי", MaxParticipants = 6, LengthTraining = 50 };
+            dddb.Insert(ttt);
+            int y = dddb.SaveChanges();
+            Console.WriteLine($"{y}rows were inserted");
+
+            //TrainingInsert
+
+            //Console.WriteLine("======TrainingInsert=======");
+            //TrainingDB dddt = new();
+            //Training tt = new Training() { Id = 11, IdTrainer = trList[0], DateOfTraining = DateTime.Now, TrainingTypeID = ttlist[0] };
+            //dddt.Insert(tt);
+            //int a = dddb.SaveChanges();
+            //Console.WriteLine($"{a}rows were inserted");
+
+            //MemberShipTypesInsert 
+
+            Console.WriteLine("======MemberShipTypesInsert=======");//יש בעיה בהרצה 
+            MemberShipTypesDB dddm = new();
+            MemberShipTypes ttd = new MemberShipTypes() { TypeName = "מנוי חדש", Price = 200 };
+            dddm.Insert(ttd);
+            int g = dddb.SaveChanges();
+            Console.WriteLine($"{g}rows were inserted");
+
+
+
+
+
+
+
 
 
 

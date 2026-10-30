@@ -121,6 +121,17 @@ namespace ViewModel
             }
         }
 
+        public virtual void Insert(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
+            }
+        }
+
+
+
 
         public int SaveChanges()
         {

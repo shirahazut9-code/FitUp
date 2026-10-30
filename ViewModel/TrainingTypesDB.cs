@@ -46,7 +46,15 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            TrainingTypes t= entity as TrainingTypes;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO TrainingTypes (TrainingName, MaxParticipants, LengthTraining) VALUES (@trainingName, @maxParticipants, @lengthTraining)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@trainingName", t.TrainingName));
+                command.Parameters.Add(new OleDbParameter("@maxParticipants", t.MaxParticipants));
+                command.Parameters.Add(new OleDbParameter("@lengthTraining", t.LengthTraining));
+            }
         }
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
