@@ -49,7 +49,21 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Person t = entity as Person;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO Person (FirstName, LastName, PhonNumber, Email, Pass, BirthDate, Active) VALUES (@firstName, @lastName, @phonNumber, @email, @pass, @birthDate ,@active)";
+                cmd.CommandText = sqlStr;
+                cmd.Parameters.Add(new OleDbParameter("@firstName", t.FirstName));
+                cmd.Parameters.Add(new OleDbParameter("@lastName", t.LastName));
+                cmd.Parameters.Add(new OleDbParameter("@phonNumber", t.PhonNumber));
+                cmd.Parameters.Add(new OleDbParameter("@email", t.Email));
+                cmd.Parameters.Add(new OleDbParameter("@pass", t.Pass));
+                cmd.Parameters.Add("@birthDate",t.BirthDate);
+                cmd.Parameters.Add(new OleDbParameter("@active", t.Active));
+
+
+            }
         }
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
@@ -62,7 +76,7 @@ namespace ViewModel
             Person m = entity as Person;
             if (m != null)
             {
-                string sqlStr = $"UPDATE Person Set FirstName=@firstName , LastName=@lastName , PhonNumber=@phonNumber , Email=@email ," +
+                string sqlStr = $"UPDATE Person Set FirstName=@firstName, LastName=@lastName , PhonNumber=@phonNumber , Email=@email ," +
                     $" Pass=@pass ,BirthDate=@birthDate , Active=@activeactive  Where ID=@id";
 
                 command.CommandText = sqlStr;

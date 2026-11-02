@@ -61,10 +61,14 @@ namespace ViewModel
             MemberShipTypes t = entity as MemberShipTypes;
             if (t != null)
             {
-                string sqlStr = $"Insert INTO MemberShipTypes (TypeName, Price, TrainingTypeID) VALUES (@typeName, @price)";
-                command.CommandText = sqlStr;
-                command.Parameters.Add(new OleDbParameter("@TypeName", t.TypeName));
-                command.Parameters.Add(new OleDbParameter("@price", t.Price));              
+                string sqlStr = "INSERT INTO MemberShipTypes (TypeName, Price) VALUES (@typeName, @price)";
+
+                cmd.CommandText = sqlStr;                                            
+                cmd.Parameters.AddWithValue("@typeName", t.TypeName);
+                cmd.Parameters.AddWithValue("@price", t.Price);
+
+                   
+                
             }
         }
         

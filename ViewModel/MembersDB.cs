@@ -74,7 +74,33 @@ namespace ViewModel
                 updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
                 updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
             }
+
+
         }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Members t = entity as Members;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO Members (Id,MemberShipTypeID, ExpirationDate) VALUES (@id,@typeName, @expirationDate,)";
+                command.CommandText = sqlStr;
+                cmd.Parameters.Add("@id", t.Id);
+                command.Parameters.Add(new OleDbParameter("@typeName", t.TypeName.Id));
+                cmd.Parameters.Add("@expirationDate", t.ExpirationDate);
+            }
+        }
+        public virtual void Insert(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
+                inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
+            }
+        }
+
+
 
     }
 }
