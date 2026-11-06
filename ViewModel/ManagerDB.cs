@@ -60,6 +60,26 @@ namespace ViewModel
                 updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
             }
         }
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Manager t = entity as Manager;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO Manager (Id) VALUES (@id)";
+                command.CommandText = sqlStr;
+                cmd.Parameters.Add("@id", t.Id);
+            
+            }
+        }
+        public virtual void Insert(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
+                inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
+            }
+        }
     }
 }
 

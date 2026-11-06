@@ -83,7 +83,7 @@ namespace ViewModel
             Members t = entity as Members;
             if (t != null)
             {
-                string sqlStr = $"Insert INTO Members (Id,MemberShipTypeID, ExpirationDate) VALUES (@id,@typeName, @expirationDate,)";
+                string sqlStr = $"Insert INTO Members (Id,MemberShipTypeID, ExpirationDate) VALUES (@id,@typeName, @expirationDate)";
                 command.CommandText = sqlStr;
                 cmd.Parameters.Add("@id", t.Id);
                 command.Parameters.Add(new OleDbParameter("@typeName", t.TypeName.Id));

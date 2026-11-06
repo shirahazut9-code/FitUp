@@ -46,7 +46,15 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Document t = entity as Document;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO Document (IDTrainer, LinkToFile) VALUES (@iDTrainer, @LinkToFile)";
+                command.CommandText = sqlStr;
+                
+                command.Parameters.Add(new OleDbParameter("@iDTrainer", t.IDTrainer.Id));
+                command.Parameters.Add(new OleDbParameter("@linkToFile", t.LinkToFile));              
+            }
         }
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)

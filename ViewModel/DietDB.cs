@@ -45,7 +45,15 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Diet t = entity as Diet;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO Diet (IDFood, IDMember, MealTime) VALUES (@iDFood, @iDMember, @MealTime)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@iDFood", t.IDFood.Id));
+                command.Parameters.Add(new OleDbParameter("@iDMember", t.IDMember.Id));
+                command.Parameters.Add("@mealTime", t.MealTime);
+            }
         }
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)

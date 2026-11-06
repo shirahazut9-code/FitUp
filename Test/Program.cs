@@ -17,18 +17,18 @@ namespace Test
             //Console.WriteLine("==============================");
 
             ////FoodDB
-            //FoodDB f = new FoodDB();
-            //FoodList flist = f.SelectAll();
-            //foreach (Food c in flist)
-            //    Console.WriteLine($"{c.FoodName},{c.Calories},{c.Proteins},{c.Carbohydrates},{c.ImageLink}");
+            FoodDB f = new FoodDB();
+            FoodList flist = f.SelectAll();
+            foreach (Food c in flist)
+                Console.WriteLine($"{c.FoodName},{c.Calories},{c.Proteins},{c.Carbohydrates},{c.ImageLink}");
 
             //Console.WriteLine("==============================");
 
             ////MemberShipTypesDB
-            MemberShipTypesDB mst = new MemberShipTypesDB();
-            MemberShipTypesList mstlist = mst.SelectAll();
-            foreach (MemberShipTypes c in mstlist)
-                Console.WriteLine($"{c.TypeName},{c.Price}");
+            //MemberShipTypesDB mst = new MemberShipTypesDB();
+            //MemberShipTypesList mstlist = mst.SelectAll();
+            //foreach (MemberShipTypes c in mstlist)
+            //    Console.WriteLine($"{c.TypeName},{c.Price}");
 
             //Console.WriteLine("==============================");
 
@@ -41,10 +41,10 @@ namespace Test
             //Console.WriteLine("========mEMBERS======================");
 
             ////MembersDB
-            //MembersDB mt = new MembersDB();
-            //MembersList mtList = mt.SelectAll();
-            //foreach (Members c in mtList)
-            //    Console.WriteLine($"{c.TypeName.TypeName},{c.ExpirationDate}");
+            MembersDB mt = new MembersDB();
+            MembersList mtList = mt.SelectAll();
+            foreach (Members c in mtList)
+                Console.WriteLine($"{c.TypeName.TypeName},{c.ExpirationDate}");
             //Console.WriteLine("==============================");
 
             ////PersonDB
@@ -56,17 +56,17 @@ namespace Test
             //Console.WriteLine("==============================");
 
             ////TrainersDB
-            //TrainersDB tr = new TrainersDB();
-            //TrainersList trList = tr.SelectAll();
-            //foreach (Trainers c in trList)
-            //    Console.WriteLine($"{c.Experience}");
+            TrainersDB tr = new TrainersDB();
+            TrainersList trList = tr.SelectAll();
+            foreach (Trainers c in trList)
+                Console.WriteLine($"{c.Experience}");
             //Console.WriteLine("============TrainingDB==================");
 
             ////TrainingDB
-            //TrainingDB t = new TrainingDB();
-            //TrainingList tList = t.SelectAll();
-            //foreach (Training c in tList)
-            //    Console.WriteLine($"{c.IdTrainer.Id},{c.DateOfTraining},{c.TrainingTypeID.Id}");
+            TrainingDB t = new TrainingDB();
+            TrainingList tList = t.SelectAll();
+            foreach (Training c in tList)
+                Console.WriteLine($"{c.IdTrainer.Id},{c.DateOfTraining},{c.TrainingTypeID.Id}");
             //Console.WriteLine("==============================");
             ////Documentdb
             //DocumentDB d = new DocumentDB();
@@ -100,7 +100,7 @@ namespace Test
             //}
             //MemberShipTypes MemberShipTypestoupdate = mstList[0];
             //MemberShipTypestoupdate.Price += 44;
-            //MemberShipTypestoupdate.TypeName += "אאא";
+            //MemberShipTypestoupdate.TypeName = "אאא";
             //msst.Update(MemberShipTypestoupdate);
             //int x= msst.SaveChanges();
             //Console.WriteLine($"{x}rows were updated");
@@ -121,11 +121,11 @@ namespace Test
             ////UPDateFood
             //Console.WriteLine("================UPDateFood==============");
             //Food FoodUpDate = flist[0];
-            //FoodUpDate.FoodName += "fhjfhf";
-            //FoodUpDate.Calories += 4748;
-            //FoodUpDate.Proteins += 8383;
-            //FoodUpDate.Carbohydrates += 58757;
-            //FoodUpDate.ImageLink += "jdff";
+            //FoodUpDate.FoodName = "fhjfhf";
+            //FoodUpDate.Calories = 4748;
+            //FoodUpDate.Proteins = 8383;
+            //FoodUpDate.Carbohydrates = 58757;
+            //FoodUpDate.ImageLink = "jdff";
             //f.Update(FoodUpDate);
             //x = f.SaveChanges();
             //Console.WriteLine($"{x}rows were updated");
@@ -247,19 +247,68 @@ namespace Test
             //int pp = dddp.SaveChanges();
             //Console.WriteLine($"{pp}rows were inserted");
 
-            //Trainers
+            //Trainersinsert
             //TrainersDB tdtd = new();
             //Trainers ttp = new Trainers() { FirstName="רומי", LastName= "מחלוף", PhonNumber=08755,Email="ROMI@", Pass="ייי", BirthDate=DateTime.Today, Active=true,Experience=DateTime.Today};
             //tdtd.Insert(ttp);
             //int tt = tdtd.SaveChanges();
             //Console.WriteLine($"{tt}rows were inserted");
 
-            //Membersבעיה - לתקן בשישי
-            MembersDB mdm = new();
-            Members mtp = new Members() { FirstName="עדי", LastName= "כהן", PhonNumber=5473,Email="Adi@", Pass="pass", BirthDate=DateTime.Today, Active=true,TypeName= mstlist[0], ExpirationDate=DateTime.Today};
-            mdm.Insert(mtp);
-            int ttm = mdm.SaveChanges();
-            Console.WriteLine($"{ttm}rows were inserted");
+            //MembersInsert
+            //Console.WriteLine("======MembersInsert=======");
+            //MembersDB mdm = new();
+            //Members mtp = new Members() { FirstName="עדי", LastName= "כהן", PhonNumber=5473,Email="Adi@", Pass="pass", BirthDate=DateTime.Today, Active=true,TypeName= mstlist[0], ExpirationDate=DateTime.Today};
+            //mdm.Insert(mtp);
+            //int ttm = mdm.SaveChanges();
+            //Console.WriteLine($"{ttm}rows were inserted");
+
+            //Manager יש בעיה -לשאול את המורה
+            //Console.WriteLine("======ManagerInsert=======");
+            //ManagerDB mPm = new();
+            //Manager mPp = new Manager() { FirstName = "יהלי", LastName = "כהן", PhonNumber = 5473, Email = "@GMAIL", Pass = "passSS", BirthDate = DateTime.Today, Active = true };
+            //mPm.Insert(mPp);
+            //int ttp = mPm.SaveChanges();
+            //Console.WriteLine($"{ttp}rows were inserted");
+
+            //Foodinsert
+            //Console.WriteLine("======Foodinsert=======");
+            //FoodDB mPm = new();
+            //Food mPp = new Food() { FoodName = "בורקס", Calories=80, Proteins=87, Carbohydrates=65, ImageLink="Link" };
+            //mPm.Insert(mPp);
+            //int ttp = mPm.SaveChanges();
+            //Console.WriteLine($"{ttp}rows were inserted");
+
+            //Document//        
+            //Console.WriteLine("======Documentinsert=======");
+            //DocumentDB mPm = new();
+            //Model.Document mPp = new Model.Document() { IDTrainer = trList[3], LinkToFile = "Link" };
+            //mPm.Insert(mPp);
+            //int ttp = mPm.SaveChanges();
+            //Console.WriteLine($"{ttp}rows were inserted");
+
+
+            //DietInsert
+            //Console.WriteLine("======Dietinsert=======");
+            //DietDB mPm = new();
+            //Diet mPp = new Diet() { IDFood = flist[1], IDMember = mtList[0], MealTime = DateTime.Today };
+            //mPm.Insert(mPp);
+            //int ttd = mPm.SaveChanges();
+            //Console.WriteLine($"{ttd}rows were inserted");
+
+            //BookingInsert
+            //Console.WriteLine("======BookingInsert=======");
+            //BookingsDB mPm = new();
+            //Bookings mPp = new Bookings() { IDMember = mtList[0], TrainingID = tList[0] };
+            //mPm.Insert(mPp);
+            //int ttd = mPm.SaveChanges();
+            //Console.WriteLine($"{ttd}rows were inserted");
+
+
+
+
+
+
+
 
 
 
