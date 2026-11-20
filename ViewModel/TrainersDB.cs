@@ -85,7 +85,13 @@ namespace ViewModel
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Trainers tt = entity as Trainers;
+            if (tt != null)
+            {
+                string sqlStr = $"DELETE FROM Trainers where id=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id", tt.Id));
+            }
         }
 
         public override void Update(BaseEntity entity)
@@ -95,6 +101,23 @@ namespace ViewModel
             {
                 updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
                 updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
+            }
+        }
+        public virtual void DeleteFromTrainer(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+            }
+        }
+        public virtual void Delete(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+                deleted.Add(new ChangeEntity(base.CreateDeletedSQL, entity));
             }
         }
 

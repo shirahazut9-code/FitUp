@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class MemberShipTypesDB:BaseDB
+    public class MemberShipTypesDB : BaseDB
     {
         public MemberShipTypesList SelectAll()
         {
@@ -22,7 +22,7 @@ namespace ViewModel
             MemberShipTypes mt = entity as MemberShipTypes;
             mt.TypeName = reader["TypeName"].ToString();
             mt.Price = int.Parse(reader["Price"].ToString());
-            
+
 
             base.CreateModel(entity);
             return mt;
@@ -49,8 +49,8 @@ namespace ViewModel
             {
                 string sqlStr = $"UPDATE MemberShipTypes Set TypeName=@typeName, Price=@price Where ID=@id";
 
-                command.CommandText= sqlStr ;
-                command.Parameters.Add(new OleDbParameter("@typeName",m.TypeName));
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@typeName", m.TypeName));
                 command.Parameters.Add(new OleDbParameter("@price", m.Price));
                 command.Parameters.Add(new OleDbParameter("@id", m.Id));
             }
@@ -63,19 +63,26 @@ namespace ViewModel
             {
                 string sqlStr = "INSERT INTO MemberShipTypes (TypeName, Price) VALUES (@typeName, @price)";
 
-                cmd.CommandText = sqlStr;                                            
+                cmd.CommandText = sqlStr;
                 cmd.Parameters.AddWithValue("@typeName", t.TypeName);
                 cmd.Parameters.AddWithValue("@price", t.Price);
 
-                   
-                
+
+
             }
         }
-        
+
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            MemberShipTypes tt = entity as MemberShipTypes;
+            if (tt != null)
+            {
+                string sqlStr = $"DELETE FROM MemberShipTypes where id=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id", tt.Id));
+            }
         }
     }
 }
+

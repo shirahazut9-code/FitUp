@@ -8,9 +8,9 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            ////TrainingTypesDB ...
-            //TrainingTypesDB db = new TrainingTypesDB();
-            //TrainingTypesList ttlist = db.SelectAll();
+            //TrainingTypesDB ...
+            TrainingTypesDB db = new TrainingTypesDB();
+            TrainingTypesList ttlist = db.SelectAll();
             //foreach (TrainingTypes c in ttlist)
             //    Console.WriteLine($"{c.TrainingName},{c.MaxParticipants},{c.LengthTraining}");
 
@@ -25,18 +25,18 @@ namespace Test
             //Console.WriteLine("==============================");
 
             ////MemberShipTypesDB
-            //MemberShipTypesDB mst = new MemberShipTypesDB();
-            //MemberShipTypesList mstlist = mst.SelectAll();
-            //foreach (MemberShipTypes c in mstlist)
-            //    Console.WriteLine($"{c.TypeName},{c.Price}");
+            MemberShipTypesDB mst = new MemberShipTypesDB();
+            MemberShipTypesList mstlist = mst.SelectAll();
+            foreach (MemberShipTypes c in mstlist)
+                Console.WriteLine($"{c.TypeName},{c.Price}");
 
             //Console.WriteLine("==============================");
 
             ////DietDB
-            //DietDB dt = new DietDB();
-            //DietList dtList = dt.SelectAll();
-            //foreach (Diet c in dtList)
-            //    Console.WriteLine($"{c.IDFood.FoodName},{c.IDMember.Id},{c.MealTime}");
+            DietDB dt = new DietDB();
+            DietList dtList = dt.SelectAll();
+            foreach (Diet c in dtList)
+                Console.WriteLine($"{c.IDFood.FoodName},{c.IDMember.Id},{c.MealTime}");
 
             //Console.WriteLine("========mEMBERS======================");
 
@@ -48,10 +48,10 @@ namespace Test
             //Console.WriteLine("==============================");
 
             ////PersonDB
-            //PersonDB p = new PersonDB();
-            //PersonList pList = p.SelectAll();
-            //foreach (Person c in pList)
-            //    Console.WriteLine($"{c.FirstName},{c.LastName},{c.PhonNumber},{c.Email},{c.Pass},{c.BirthDate},{c.Active}");
+            PersonDB p = new PersonDB();
+            PersonList pList = p.SelectAll();
+            foreach (Person c in pList)
+                Console.WriteLine($"{c.FirstName},{c.LastName},{c.PhonNumber},{c.Email},{c.Pass},{c.BirthDate},{c.Active}");
 
             //Console.WriteLine("==============================");
 
@@ -302,6 +302,59 @@ namespace Test
             //mPm.Insert(mPp);
             //int ttd = mPm.SaveChanges();
             //Console.WriteLine($"{ttd}rows were inserted");
+
+            //TrainingTypesDeleted
+            //Console.WriteLine("TrainingTypesDeleted");
+            //TrainingTypes tt1 = ttlist[0];
+            //db.Delete(tt1);
+            //int tt2 = db.SaveChanges();
+            //Console.WriteLine($"{tt2} rows Deleted");
+
+            //TrainingDeleted
+            //Console.WriteLine("TrainingDeleted");
+            //Training t1 = tList[0];
+            //t.Delete(t1);
+            //int t2 = t.SaveChanges();
+            //Console.WriteLine($"{t2} rows Deleted");
+
+            //MembersShipTypesDeleted
+            //Console.WriteLine("MembersShipTypesDeleted");
+            //MemberShipTypes mt1 = mstlist[0];
+            //mst.Delete(mt1);
+            //int mt2 = mst.SaveChanges();
+            //Console.WriteLine($"{mt2} rows Deleted");
+
+            //PersonDeleted
+            //Console.WriteLine("PersonDeleted");
+            //Person p1 = pList[0];
+            //p.Delete(p1);
+            //int p2 = p.SaveChanges();
+            //Console.WriteLine($"{p2} rows Deleted");
+
+            //FoodDeleted
+            //Console.WriteLine("FoodDeleted");
+            //Food f1 = flist[0];
+            //f.Delete(f1);
+            //int f2 = f.SaveChanges();
+            //Console.WriteLine($"{f2} rows Deleted");
+
+            //Diet
+            //Console.WriteLine("DietDelted");
+            //Diet d1 = dtList[0];
+            //dt.Delete(d1);
+            //int d2 = dt.SaveChanges();
+            //Console.WriteLine($"{d2} rows Deleted");
+
+            ////TrainersDeleted
+            //Console.WriteLine("DietDelted");
+            //Diet d1 = dtList[0];
+            //dt.Delete(d1);
+            //int d2 = dt.SaveChanges();
+            //Console.WriteLine($"{d2} rows Deleted");
+
+            //trainersלבדוק שיעור הבא 
+
+
 
 
 

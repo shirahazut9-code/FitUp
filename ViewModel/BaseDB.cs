@@ -129,6 +129,14 @@ namespace ViewModel
                 inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
             }
         }
+        public virtual void Delete(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+            }
+        }
 
 
 

@@ -58,7 +58,13 @@ namespace ViewModel
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Diet tt = entity as Diet;
+            if (tt != null)
+            {
+                string sqlStr = $"DELETE FROM Diet where id=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id", tt.Id));
+            }
         }
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
         {
