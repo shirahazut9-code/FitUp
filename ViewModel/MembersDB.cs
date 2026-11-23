@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class MembersDB:PersonDB
+    public class MembersDB : PersonDB
     {
         public MembersList SelectAll()
         {
@@ -99,8 +99,32 @@ namespace ViewModel
                 inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
             }
         }
-
-
-
+        public virtual void DeleteFromMembers(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+            }
+        }
+        public virtual void Delete(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+                deleted.Add(new ChangeEntity(base.CreateDeletedSQL, entity));
+            }
+        }
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Members tt = entity as Members;
+            if (tt != null)
+            {
+                string sqlStr = $"DELETE FROM Members where id=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id", tt.Id));
+            }
+        }
     }
 }

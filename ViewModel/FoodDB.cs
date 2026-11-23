@@ -51,9 +51,8 @@ namespace ViewModel
             Food t = entity as Food;
             if (t != null)
             {
-                string sqlStr = $"Insert INTO Food (Id,FoodName, Calories,Proteins,Carbohydrates,ImageLink) VALUES (@id,@foodName, @calories,@proteins,@carbohydrates,@imageLink)";
-                command.CommandText = sqlStr;
-                cmd.Parameters.Add("@id", t.Id);
+                string sqlStr = $"Insert INTO Food (FoodName, Calories,Proteins,Carbohydrates,ImageLink) VALUES (@foodName, @calories,@proteins,@carbohydrates,@imageLink)";
+                command.CommandText = sqlStr;         
                 command.Parameters.Add(new OleDbParameter("@foodName", t.FoodName));
                 command.Parameters.Add(new OleDbParameter("@calories", t.Calories));
                 command.Parameters.Add(new OleDbParameter("@proteins", t.Proteins));
