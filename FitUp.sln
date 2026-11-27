@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIFitUp", "APIFitUp\APIFitUp.csproj", "{4C9259F2-EC08-4FDA-8183-36BC9945E26A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiInterface", "ApiInterface\ApiInterface.csproj", "{617583E0-8372-4876-88A2-ECD41745C7EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4C9259F2-EC08-4FDA-8183-36BC9945E26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C9259F2-EC08-4FDA-8183-36BC9945E26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C9259F2-EC08-4FDA-8183-36BC9945E26A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{617583E0-8372-4876-88A2-ECD41745C7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{617583E0-8372-4876-88A2-ECD41745C7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{617583E0-8372-4876-88A2-ECD41745C7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{617583E0-8372-4876-88A2-ECD41745C7EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

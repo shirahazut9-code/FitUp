@@ -1,6 +1,62 @@
-@APIFitUp_HostAddress = http://localhost:5011
+@APIFitUp_HostAddress = http://localhost:5011 
 
 GET {{APIFitUp_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/APIUpDate/UpDatePerson
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllTraining
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllBookings
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllBookings
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllDiet
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllDocument
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllFood
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllManager
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllMembers
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllMemberShipTypes
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllPerson
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllTrainers
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllTraining
+
+###
+
+GET {{APIFitUp_HostAddress}}/api/apiselect/SelectAllTrainingTypes
 
 ###
